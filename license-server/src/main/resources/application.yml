@@ -1,0 +1,5 @@
+spring.data.mongodb.database: license
+spring.data.mongodb.uri: mongodb+srv://urlshortener:yZL6SiyKdCIh52AQ@urlshortener.vxfuv.mongodb.net/urlshortener?retryWrites=true&w=majority
+
+license.api-keys:
+  - '0000000-0000-0000-0000-000000000000'
