@@ -3,8 +3,8 @@ package dev.qrowned.license.client;
 import dev.qrowned.license.api.data.LicenseData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import reactor.core.publisher.Flux;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -14,8 +14,8 @@ public final class LicenseHandler {
 
     private final UUID platformUUID;
 
-    public Flux<LicenseData> authenticate(@NotNull UUID licenseKey) {
-        return LICENSE_CLIENT.checkLicenseData(this.platformUUID, licenseKey);
+    public LicenseData authenticate(@NotNull UUID licenseKey) throws IOException {
+        return LICENSE_CLIENT.retrieveLicenseData(this.platformUUID, licenseKey);
     }
 
 }
