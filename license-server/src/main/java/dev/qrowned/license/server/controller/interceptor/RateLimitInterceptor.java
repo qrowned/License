@@ -32,9 +32,10 @@ public final class RateLimitInterceptor implements HandlerInterceptor, WebMvcCon
     public boolean preHandle(@NotNull HttpServletRequest request,
                              @NotNull HttpServletResponse response,
                              @NotNull Object handler) throws Exception {
-        if (this.licenseServerConfig.getIpWhitelist().contains(request.getRemoteAddr())) return true;
+        String ipAddress = ServletRequestHelper.getClientIpAddressIfServletRequestExist();
+        if (this.licenseServerConfig.getIpWhitelist().contains(ipAddress)) return true;
 
-        Bucket bucket = this.bucketCache.computeIfAbsent(request.getRemoteAddr(), s -> Bucket4j.builder()
+        Bucket bucket = this.bucketCache.computeIfAbsent(ipAddress, s -> Bucket4j.builder()
                 .addLimit(LIMIT)
                 .build());
 
