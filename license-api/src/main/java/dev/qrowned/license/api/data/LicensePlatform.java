@@ -1,16 +1,17 @@
 package dev.qrowned.license.api.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @AllArgsConstructor
 public class LicensePlatform {
 
-    private final UUID uuid;
+    private UUID uuid;
     private String name;
-    private final long createdAt;
+    private long createdAt;
 
 }

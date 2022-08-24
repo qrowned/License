@@ -13,8 +13,8 @@ import java.util.UUID;
 @ConfigurationProperties(prefix = "license")
 public class LicenseServerConfig {
 
-    private final List<String> apiKeys;
-    private final List<String> ipWhitelist;
+    private List<String> apiKeys;
+    private List<String> ipWhitelist;
 
     public LicenseServerConfig() {
         this.apiKeys = Collections.singletonList(UUID.randomUUID().toString());
