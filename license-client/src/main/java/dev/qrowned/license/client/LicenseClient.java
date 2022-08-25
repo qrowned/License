@@ -1,5 +1,7 @@
 package dev.qrowned.license.client;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dev.qrowned.license.api.data.LicenseData;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
@@ -11,8 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.UUID;
 
-import com.google.gson.*;
-
 @Getter
 public final class LicenseClient {
 
@@ -23,7 +23,7 @@ public final class LicenseClient {
             .create();
 
     public LicenseData retrieveLicenseData(@NotNull UUID platformUUID,
-                                        @NotNull UUID licenseKey) throws IOException {
+                                           @NotNull UUID licenseKey) throws IOException {
         URL url = new URL(URL + "check/" + platformUUID + "/" + licenseKey);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");

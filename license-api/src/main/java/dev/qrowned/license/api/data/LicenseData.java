@@ -1,9 +1,13 @@
 package dev.qrowned.license.api.data;
 
-import lombok.*;
-import org.jetbrains.annotations.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Getter
@@ -19,8 +23,7 @@ public class LicenseData {
     private long expirationDate;
     private boolean active;
 
-    @Nullable
-    private String notice;
+    private Map<Object, Object> extraData = new HashMap<>();
 
     public boolean isActive() {
         return this.active && (this.expirationDate == -1 || this.expirationDate > System.currentTimeMillis());

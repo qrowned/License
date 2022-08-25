@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -29,7 +30,7 @@ public final class LicenseService {
 
     public CompletableFuture<LicenseData> createLicense(@NotNull LicensePlatform licensePlatform,
                                                         long expirationDate,
-                                                        @Nullable String notice) {
+                                                        Map<Object, Object> extraData) {
         return CompletableFuture.supplyAsync(() -> this.licenseDataRepository.save(
                 new MongoLicenseData(
                         licensePlatform.getUuid(),
@@ -37,7 +38,7 @@ public final class LicenseService {
                         System.currentTimeMillis(),
                         expirationDate,
                         true,
-                        notice
+                        extraData
                 ))
         );
     }
