@@ -9,15 +9,18 @@ import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Bucket4j;
 import io.github.bucket4j.Refill;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
@@ -44,7 +47,21 @@ public class LicenseDataController {
     }
 
     @Async
-    @PostMapping("create/")
+    @GetMapping("all")
+    public Future<ResponseEntity<List<LicenseData>>> getAll() {
+        return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(this.licenseDataRepository.findAll()
+                .stream().map(mongoLicenseData -> (LicenseData) mongoLicenseData)
+                .collect(Collectors.toList())));
+    }
+
+    @Async
+    @GetMapping("{platformUUID}/all")
+    public Future<ResponseEntity<List<LicenseData>>> getAll(@PathVariable UUID platformUUID) {
+        return this.licenseDataRepository.findAllAsyncByPlatformUUID(platformUUID).thenApplyAsync(ResponseEntity::ok);
+    }
+
+    @Async
+    @PostMapping("create")
     public Future<ResponseEntity<LicenseData>> create(@RequestParam UUID platformUUID,
                                                       @RequestParam(defaultValue = "-1", required = false) long expirationDate,
                                                       @RequestParam(required = false) String notice) {
