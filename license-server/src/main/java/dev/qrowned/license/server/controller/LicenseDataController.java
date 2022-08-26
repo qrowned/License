@@ -44,7 +44,9 @@ public class LicenseDataController {
     @Async
     @GetMapping("all")
     public Future<ResponseEntity<List<LicenseData>>> getAll() {
-        return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(this.licenseDataRepository.findAll().stream().map(mongoLicenseData -> (LicenseData) mongoLicenseData).collect(Collectors.toList())));
+        return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(this.licenseDataRepository.findAll().stream()
+                        .map(mongoLicenseData -> (LicenseData) mongoLicenseData)
+                        .collect(Collectors.toList())));
     }
 
     @Async
@@ -54,15 +56,28 @@ public class LicenseDataController {
     }
 
     @Async
-    @GetMapping("{platformUUID}/allByNotice/")
-    public Future<ResponseEntity<List<LicenseData>>> getAllByNotice(@PathVariable UUID platformUUID, @RequestParam String notice) {
-        return this.licenseDataRepository.findAllAsyncByPlatformUUIDAndNotice(platformUUID, notice).thenApplyAsync(ResponseEntity::ok);
+    @GetMapping("{platformUUID}/allByExtraData/")
+    public Future<ResponseEntity<List<LicenseData>>> getAllByExtraData(@PathVariable UUID platformUUID,
+                                                                       @RequestParam Object key,
+                                                                       @RequestParam Object value) {
+        return this.licenseDataRepository.findAllAsyncByPlatformUUID(platformUUID)
+                .thenApplyAsync(licenseDataList -> ResponseEntity.ok(
+                        licenseDataList.stream()
+                                .filter(licenseData -> licenseData.getExtraData().get(key).equals(value))
+                                .collect(Collectors.toList())
+                ));
     }
 
     @Async
-    @GetMapping("allByNotice/")
-    public Future<ResponseEntity<List<LicenseData>>> getAllByNotice(@RequestParam String notice) {
-        return this.licenseDataRepository.findAllAsyncByNotice(notice).thenApplyAsync(ResponseEntity::ok);
+    @GetMapping("allByExtraData/")
+    public Future<ResponseEntity<List<LicenseData>>> getAllByExtraData(@RequestParam Object key,
+                                                                       @RequestParam Object value) {
+        return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(
+                this.licenseDataRepository.findAll()
+                        .stream()
+                        .filter(mongoLicenseData -> mongoLicenseData.getExtraData().get(key).equals(value))
+                        .collect(Collectors.toList()))
+        );
     }
 
     @Async

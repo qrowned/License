@@ -20,12 +20,4 @@ public interface LicenseDataRepository extends MongoRepository<MongoLicenseData,
     @Query("{ 'platformUUID' : ?0 }")
     CompletableFuture<List<LicenseData>> findAllAsyncByPlatformUUID(@NotNull UUID platformUUID);
 
-    @Async
-    @Query("{ 'platformUUID' : ?0 }, { 'notice': ?1 }")
-    CompletableFuture<List<LicenseData>> findAllAsyncByPlatformUUIDAndNotice(@NotNull UUID platformUUID, @NotNull String notice);
-
-    @Async
-    @Query("{ 'notice': ?0 }")
-    CompletableFuture<List<LicenseData>> findAllAsyncByNotice(@NotNull String notice);
-
 }

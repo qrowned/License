@@ -6,13 +6,12 @@ import dev.qrowned.license.server.service.LicenseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/platform/")
@@ -30,6 +29,20 @@ public class LicensePlatformController {
 
             return this.licenseService.createLicensePlatform(name).thenApplyAsync(ResponseEntity::ok);
         });
+    }
+
+    @Async
+    @GetMapping("all/")
+    public Future<ResponseEntity<List<LicensePlatform>>> getAll() {
+        return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(this.licensePlatformRepository.findAll().stream()
+                .map(mongoLicensePlatform -> (LicensePlatform) mongoLicensePlatform)
+                .collect(Collectors.toList())));
+    }
+
+    @Async
+    @GetMapping("{name}")
+    public Future<ResponseEntity<LicensePlatform>> getPlatform(@PathVariable String name) {
+        return this.licensePlatformRepository.findAsyncByName(name).thenApplyAsync(ResponseEntity::ok);
     }
 
 }
