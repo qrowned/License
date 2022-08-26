@@ -42,7 +42,10 @@ public class LicensePlatformController {
     @Async
     @GetMapping("{name}")
     public Future<ResponseEntity<LicensePlatform>> getPlatform(@PathVariable String name) {
-        return this.licensePlatformRepository.findAsyncByName(name).thenApplyAsync(ResponseEntity::ok);
+        return this.licensePlatformRepository.findAsyncByName(name)
+                .thenApplyAsync(licensePlatform ->
+                        licensePlatform == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(licensePlatform)
+                );
     }
 
 }
