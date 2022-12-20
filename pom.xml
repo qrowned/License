@@ -22,7 +22,7 @@
 
     <distributionManagement>
         <repository>
-            <id>packagecloud-travis</id>
+            <id>packagecloud-qrowned</id>
             <url>packagecloud+https://packagecloud.io/qrowned/releases</url>
         </repository>
     </distributionManagement>
