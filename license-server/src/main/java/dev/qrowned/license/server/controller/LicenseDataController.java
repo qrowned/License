@@ -45,8 +45,8 @@ public class LicenseDataController {
     @GetMapping("all")
     public Future<ResponseEntity<List<LicenseData>>> getAll() {
         return CompletableFuture.supplyAsync(() -> ResponseEntity.ok(this.licenseDataRepository.findAll().stream()
-                        .map(mongoLicenseData -> (LicenseData) mongoLicenseData)
-                        .collect(Collectors.toList())));
+                .map(mongoLicenseData -> (LicenseData) mongoLicenseData)
+                .collect(Collectors.toList())));
     }
 
     @Async
