@@ -20,6 +20,13 @@
         <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>packagecloud-travis</id>
+            <url>packagecloud+https://packagecloud.io/qrowned/releases</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -30,8 +37,18 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>23.0.0</version>
+            <version>23.1.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>io.packagecloud.maven.wagon</groupId>
+                <artifactId>maven-packagecloud-wagon</artifactId>
+                <version>0.0.4</version>
+            </extension>
+        </extensions>
+    </build>
 
 </project>
