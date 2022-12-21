@@ -1,9 +1,8 @@
 package dev.qrowned.license.server.controller.interceptor;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
 
 public final class ServletRequestHelper {
 
