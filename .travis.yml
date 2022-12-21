@@ -6,5 +6,6 @@ deploy:
   username: qrowned
   token:
     secure: uBUczF19NeI1s+UxSZH017LjbgqycjwnOAYFwWm6mvIQlW+26BOBCtDBbKOdg1f8KmcoSJHrckc0yn5gj+j6c4wYEdUUKXMD++aVR16c8WNwwp0Z7DoVQ8PB4uWRam5/+B/idU96qPaD3WeOwNXm9dKhvRvaBOzJQTibDH63WtaWFxnfDwzJepm52sRDB7EMTLa7o/JnD6C3bxFrSIzuLVdIRjxYVsxXNq77A0mWyqlF9OBX5s+nddC/6oG9f8FnAMyH1ufOvqk8df5GsBW0owa9PlKPGRSAV/jJ1vLGoFNXuriYitD/T+r2zC558/liYhS/3BBlBB+w1rSPacJZAVj7esQWojbgkyQ2V+ajHnMvUEXIg2s1uhnBQbpNTnrIkHeB/g7t6YSI+yV3lPBvgVYj7UVGMUWj4MBgkyaMEZdo3LcJwr3duePK8+jov4IBq/XC5ALnK0rfad4xmjMNlSy38zZmMzrR5+ZDwx/WHQn4pX8lkN194H60xkGDF+hkxWJkV7AYY9hmYVe3/gRte753MTxsT41ciLrRdNZUy+EAyUTi7CLp5AwmrdOyoH9bAqfIGFo5dyL1047fawBEUfbEoUUaBCuFyZmjGWX1Lb54YveMVURdnMmkrHnFAAG6MNcHbsRqImaPME9vO9J/LBr7e3Ek1KxGHXGlH2PbEi0=
-  repository: qrowned/releases
+  repository: releases
   edge: true
+  local_dir: license-client/target
