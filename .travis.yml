@@ -9,3 +9,5 @@ deploy:
   repository: releases
   edge: true
   local_dir: license-client/target
+  on:
+    all_branches: true
