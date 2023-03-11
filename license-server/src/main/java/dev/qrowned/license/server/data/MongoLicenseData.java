@@ -1,7 +1,6 @@
 package dev.qrowned.license.server.data;
 
 import dev.qrowned.license.api.data.LicenseData;
-import org.jetbrains.annotations.Nullable;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Map;

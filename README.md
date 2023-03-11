@@ -15,8 +15,10 @@
 ## 💻 Built With
 
 * []() <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="java" width="20" height="20"/> Java
-* []() <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="20" height="20"/> Spring Boot
-* []() <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" alt="mongodb" width="20" height="20"/> MongoDB
+* []() <img src="https://www.vectorlogo.zone/logos/springio/springio-icon.svg" alt="spring" width="20" height="20"/>
+  Spring Boot
+* []() <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" alt="mongodb" width="20" height="20"/>
+  MongoDB
 
 ## ⛏ Installation
 
