@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Component
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public final class ApiKeyFilter extends GenericFilterBean {
         String header = httpServletRequest.getHeader("API-KEY");
 
         if (httpServletRequest.getServletPath().startsWith("/check/")
-                || (this.licenseServerConfig.getApiKeys().contains(header)
+                || (Arrays.asList(this.licenseServerConfig.getApiKeys()).contains(header)
                 || this.licenseServerConfig.getIpWhitelist().contains(ServletRequestHelper.getClientIpAddressIfServletRequestExist()))
         )
             filterChain.doFilter(servletRequest, servletResponse);

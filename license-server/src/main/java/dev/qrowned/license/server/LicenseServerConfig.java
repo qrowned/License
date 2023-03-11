@@ -13,11 +13,11 @@ import java.util.UUID;
 @ConfigurationProperties(prefix = "license")
 public class LicenseServerConfig {
 
-    private List<String> apiKeys;
+    private String[] apiKeys;
     private List<String> ipWhitelist;
 
     public LicenseServerConfig() {
-        this.apiKeys = Collections.singletonList(UUID.randomUUID().toString());
+        this.apiKeys = new String[]{UUID.randomUUID().toString()};
         this.ipWhitelist = Collections.singletonList("127.0.0.1");
     }
 
