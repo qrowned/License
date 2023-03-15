@@ -6,3 +6,9 @@ spring.data.mongodb.port: 27017
 spring.data.mongodb.username: root
 spring.data.mongodb.password: root
 spring.data.mongodb.database: license
+
+sentry:
+  dsn: YOUR_SENTRY_DSN
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  traces-sample-rate: 1.0

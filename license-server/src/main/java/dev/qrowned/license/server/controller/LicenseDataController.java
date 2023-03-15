@@ -4,6 +4,7 @@ import dev.qrowned.license.api.data.LicenseData;
 import dev.qrowned.license.server.repositories.LicenseDataRepository;
 import dev.qrowned.license.server.repositories.LicensePlatformRepository;
 import dev.qrowned.license.server.service.LicenseService;
+import io.sentry.spring.jakarta.tracing.SentrySpan;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class LicenseDataController {
     private final LicensePlatformRepository licensePlatformRepository;
 
     @Async
+    @SentrySpan
     @GetMapping("check/{platformUUID}/{licenseKey}")
     public Future<ResponseEntity<LicenseData>> check(@PathVariable UUID platformUUID, @PathVariable UUID licenseKey) {
         ResponseEntity<LicenseData> failedResponse = new ResponseEntity<>(HttpStatus.LOCKED);
@@ -81,6 +83,7 @@ public class LicenseDataController {
     }
 
     @Async
+    @SentrySpan
     @PostMapping("create/")
     public Future<ResponseEntity<LicenseData>> create(@RequestParam UUID platformUUID,
                                                       @RequestParam(defaultValue = "-1", required = false) long expirationDate,
