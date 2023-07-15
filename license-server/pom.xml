@@ -5,7 +5,7 @@
     <parent>
         <artifactId>license-parent</artifactId>
         <groupId>dev.qrowned.license</groupId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>dev.qrowned.license</groupId>
             <artifactId>license-api</artifactId>
-            <version>${revision}</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,6 +65,7 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
+                    <finalName>license</finalName>
                     <descriptors>
                         <descriptor>src/main/assembly/descriptor.xml</descriptor>
                     </descriptors>

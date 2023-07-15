@@ -5,7 +5,7 @@
     <parent>
         <artifactId>license-parent</artifactId>
         <groupId>dev.qrowned.license</groupId>
-        <version>${revision}</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>dev.qrowned.license</groupId>
             <artifactId>license-api</artifactId>
-            <version>${revision}</version>
+            <version>1.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>

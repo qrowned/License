@@ -1,0 +1,11 @@
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./license-server/docker/dev/Dockerfile
+    ports:
+      - 8050:8080
+    volumes:
+      - ./configs/application.yml:/app/application.yml
+      - ./configs:/app/configs/
+      - ./license-server/target/license-application/license/lib:/app/lib
